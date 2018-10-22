@@ -11,5 +11,5 @@
 * Save this json to a file called package.json
 
 # Bonus
-* Don't hardcode 5 readlines
+* Don't hardcode 5 readlines (only use readline once...how to make code reuseable)
 * Don't using string concatenation or template literals
