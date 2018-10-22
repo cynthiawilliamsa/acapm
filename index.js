@@ -1,5 +1,8 @@
 const fs = require('fs');
 const readline = require('readline');
+const rl = readline.createInterface({ 
+    input: process.stdin,
+    output: process.stdout});
 
 // console.log(process.argv);
 // process.argv.forEach(function (val, index, array) {
@@ -15,22 +18,24 @@ const readline = require('readline');
 //     console.log('true');
 // }
 
-// var readline = require('readline');
-
-var rl = readline.createInterface(process.stdin, process.stdout);
-
-var colors = {
-    color: []
-}
-
-// for(i=0; i < 6; i++) {
-    rl.question('Name a color: ');
-// }
-
-
-    //     colors.push(color.trim());
-    //     rl.setPrompt('Enter a color');
-    //     console.log(color.trim());
-    //     rl.prompt();
-    // });
-
+function nameNumbers() {
+    var nums = []    
+        rl.question('What is today?', (answer) => {
+                    console.log(`Today is ${answer}`); 
+                    rl.setPrompt("Enter a number: ");
+                    rl.prompt();                
+                    rl.on('line', (num)=>{
+                        nums.push(num); 
+                        console.log(nums)
+                        if(nums.length === 5) {
+                            rl.close();
+                        } else {
+                            rl.setPrompt('Enter another number: ');      
+                            rl.prompt();                                                       
+                        }
+            
+                    });
+                       
+                });
+            }
+    nameNumbers();    
