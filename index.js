@@ -52,5 +52,3 @@ function questionFun() {
         questionFun(question);    
 
 
-
-    // 
