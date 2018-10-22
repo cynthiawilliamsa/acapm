@@ -4,10 +4,7 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout});
 
-// console.log(process.argv);
-// process.argv.forEach(function (val, index, array) {
-//  console.log(index + ': ' + val);
-// });
+
 
 // if(process.argv[2] === "init"){
 //   //do init stuff
@@ -18,24 +15,42 @@ const rl = readline.createInterface({
 //     console.log('true');
 // }
 
-function nameNumbers() {
-    var nums = []  
-        rl.question('What is today?', (answer) => {
-                    console.log(`Today is ${answer}`); 
-                    rl.setPrompt("Enter a number: ");
-                    rl.prompt();                
-                    rl.on('line', (num)=>{
-                        nums.push(num); 
-                        console.log(nums)
-                        if(nums.length === 5) {
-                            rl.close();
-                        } else {
-                            rl.setPrompt('Enter another number: ');      
-                            rl.prompt();                                                       
+const response = {  
+        input: []
+
+}
+const question = [
+    'What is today?',
+    'Is it sunny?',
+    'Is it hot?',
+    'What year is it?',
+    'What is your favorite day?'
+]
+
+function questionFun() {
+    let Arr = question
+    console.log(response.input.length)
+    rl.question(Arr[0], (answer) => {
+        response.input.push(answer);        
+        if (Arr.length !==0) {
+           Arr = question.shift() 
+           questionFun() 
+        }else{
+            rl.close()
+            let myJSON = JSON.stringify(response)
+            fs.writeFile("new-package.json", myJSON, function (err) {
+                if (err) {
+                    console.log(err);
+        
                         }
             
-                    });
-                       
-                });
+                 });
+                                   
             }
-    nameNumbers();    
+         });
+        }
+        questionFun(question);    
+
+
+
+    // 
