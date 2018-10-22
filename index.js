@@ -19,7 +19,7 @@ const rl = readline.createInterface({
 // }
 
 function nameNumbers() {
-    var nums = []    
+    var nums = []  
         rl.question('What is today?', (answer) => {
                     console.log(`Today is ${answer}`); 
                     rl.setPrompt("Enter a number: ");
