@@ -6,14 +6,14 @@ const rl = readline.createInterface({
 
 
 
-// if(process.argv[2] === "init"){
-//   //do init stuff
-//  console.log("Continue");
-// } 
+if(process.argv[2] === "init"){
+  //do init stuff
+ console.log("Continue");
+} 
 
-// if (fs.existsSync('./package.json')) {
-//     console.log('true');
-// }
+if (fs.existsSync('./package.json')) {
+    console.log('true');
+}
 
 const response = {  
         input: []
@@ -29,7 +29,7 @@ const question = [
 
 function questionFun() {
     let Arr = question
-    console.log(response.input.length)
+    // console.log(response.input.length)
     rl.question(Arr[0], (answer) => {
         response.input.push(answer);        
         if (Arr.length !==0) {
@@ -52,3 +52,4 @@ function questionFun() {
         questionFun(question);    
 
 
+//check for package.json to exsist
